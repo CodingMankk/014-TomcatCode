@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="okhttpDemo"
+  id="myeclipse.1530671006596"
+  context-root="/okhttpDemo"
+  j2ee-spec="5.0"
+  archive="okhttpDemo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
