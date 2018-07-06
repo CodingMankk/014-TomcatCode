@@ -19,7 +19,7 @@ import com.sun.net.httpserver.HttpServer;
 public class UserAction extends ActionSupport {
 
 	/**
-	 * [1]½ÓÊÕpostÌá½»Êý¾Ý
+	 * [1]ï¿½ï¿½ï¿½ï¿½postï¿½á½»ï¿½ï¿½ï¿½
 	 * 
 	 * @throws IOException
 	 */
@@ -38,7 +38,7 @@ public class UserAction extends ActionSupport {
 
 		System.out.println(sbBuilder.toString());
 
-		// ¡¾2¡¿½ÓÊÕµ½appÇëÇóºó·µ»Ø×´Ì¬
+		// ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½appï¿½ï¿½ï¿½ï¿½ó·µ»ï¿½×´Ì¬
 		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter writer = response.getWriter();
 		writer.write("Server:postString Success!");
@@ -50,17 +50,24 @@ public class UserAction extends ActionSupport {
 
 	private String username;
 	private String password;
+	private String paramskey1;
+	private String paramskey2;
+	private String paramskey3;
+
+
+
 
 	/**
-	 * [2]get ÇëÇóµÄÊý¾Ý
+	 * [2]get ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 * @throws IOException
 	 */
 	public String login() throws IOException {
-		// ¡¾1¡¿½«½ÓÊÕµ½µÄgetÊý¾Ý´òÓ¡ÔÚ¿ØÖÆÌ¨
+		// ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½getï¿½ï¿½Ý´ï¿½Ó¡ï¿½Ú¿ï¿½ï¿½ï¿½Ì¨
 		System.out.println(username + "," + password);
-		// ¡¾2¡¿½ÓÊÕµ½appÇëÇóºó·µ»Ø×´Ì¬
+		System.out.println(paramskey1 + "," + paramskey2+"," + paramskey3);
+		// ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½appï¿½ï¿½ï¿½ï¿½ó·µ»ï¿½×´Ì¬
 		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter writer = response.getWriter();
 		writer.write("Server:GetRequest Success!");
@@ -86,23 +93,23 @@ public class UserAction extends ActionSupport {
 	}
 
 	/**
-	 * [3]postFile --½ÓÊÕ¿Í»§¶ËÌá½»µÄfile-´Ë´¦ÊÇÒ»ÕÅImage£»
+	 * [3]postFile --ï¿½ï¿½ï¿½Õ¿Í»ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½file-ï¿½Ë´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Imageï¿½ï¿½
 	 * 
-	 * ÎÄ¼þ±£´æµÄÎ»ÖÃ£ºapache-tomcat-7.0.54\webapps\okhttpDemo\files
+	 * ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½apache-tomcat-7.0.54\webapps\okhttpDemo\files
 	 * 
 	 * @throws IOException
 	 */
 
 	public String postFile() throws IOException {
 		
-		String fileName = "360RootSetup.exe";
+		String fileName = "struts-2.3.34-all.zip";
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		ServletInputStream is = request.getInputStream();
 
 		String dir = ServletActionContext.getServletContext().getRealPath(
 				"files");
-		File file = new File(dir, fileName); // ½«ÎÄ¼þ±£´æÎª¸ÃÃû³ÆµÄÎÄ¼þ£»
+		File file = new File(dir, fileName); // ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 		FileOutputStream fos = new FileOutputStream(file);
 
 		int len = 0;
@@ -114,13 +121,38 @@ public class UserAction extends ActionSupport {
 		fos.flush();
 		fos.close();
 
-		// ¡¾2¡¿½ÓÊÕµ½appÇëÇóºó·µ»Ø×´Ì¬
+		// ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½appï¿½ï¿½ï¿½ï¿½ó·µ»ï¿½×´Ì¬
 		HttpServletResponse response = ServletActionContext.getResponse();
 		PrintWriter writer = response.getWriter();
 		writer.write("Server: postFile Success!");
 		writer.flush();
 
 		return null;
+	}
+	
+	
+	public String getParamskey1() {
+		return paramskey1;
+	}
+
+	public void setParamskey1(String paramskey1) {
+		this.paramskey1 = paramskey1;
+	}
+
+	public String getParamskey2() {
+		return paramskey2;
+	}
+
+	public void setParamskey2(String paramskey2) {
+		this.paramskey2 = paramskey2;
+	}
+
+	public String getParamskey3() {
+		return paramskey3;
+	}
+
+	public void setParamskey3(String paramskey3) {
+		this.paramskey3 = paramskey3;
 	}
 
 }
